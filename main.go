@@ -13,10 +13,12 @@ import (
 func main() {
 
 	debug := flag.Bool("debug", false, "enable debug output")
+	port := flag.Int("port", 5555, "dns server port")
 	flag.Parse()
+
 	done := make(chan bool, 1)
 	srv := server.NewServer(*debug, done)
-	go srv.Run(5555)
+	go srv.Run(*port)
 
 	sig := make(chan os.Signal, 1)
 	signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
