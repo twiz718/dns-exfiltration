@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/twiz718/dns-exfiltration/pkg/client"
 )
@@ -34,10 +35,13 @@ func main() {
 	if *debug {
 		fmt.Printf("Sending file %v to %v:%v\n", *file, *server, *port)
 	}
+	timeStart := time.Now()
 	c := client.NewClient(*server, *port, *debug)
 	err := c.SendFile(*file)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
+	timeElapsed := time.Since(timeStart)
+	fmt.Printf("Time elapsed: %v\n", timeElapsed)
 }

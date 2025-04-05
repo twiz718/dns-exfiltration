@@ -47,7 +47,7 @@ var invalidCases = []string{
 }
 
 func TestRegexValid(t *testing.T) {
-	h := NewHandler()
+	h := NewHandler(false)
 	for _, input := range validCases {
 		q := new(dns.Question)
 		q.Name = input
@@ -62,7 +62,7 @@ func TestRegexValid(t *testing.T) {
 }
 
 func TestRegexInvalid(t *testing.T) {
-	h := NewHandler()
+	h := NewHandler(false)
 	for _, input := range invalidCases {
 		q := new(dns.Question)
 		q.Name = input
