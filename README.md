@@ -1,5 +1,9 @@
 # Data Exfiltration using pure DNS
 
+## Demo
+
+https://www.youtube.com/watch?v=NtNpLDhnbno
+
 ## Why
 
 Pure DNS data exfilitration is difficult to detect and most environments do not block outgoing DNS traffic. The data itself is masquerading as `A` record DNS requests.
